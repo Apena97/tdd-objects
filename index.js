@@ -11,6 +11,7 @@
  * getCohort({cohort: 3476, name: "Charlie"}); // 3476
  */
 export function getCohort(student) {
+  return student.cohort;
   // TODO
 }
 
@@ -30,7 +31,12 @@ export function getCohort(student) {
  * sortStudents({cohort: 1, name: "Alice"}, {cohort: 2, name: "Alice"}); // {cohort: 1, name: "Alice"}
  */
 export function sortStudents(studentA, studentB) {
-  // TODO
+    if (studentA.name <= studentB.name) {
+        return studentA;
+    } else {
+        return studentB;
+    }
+    // TODO
 }
 
 /**
@@ -47,6 +53,7 @@ export function sortStudents(studentA, studentB) {
  * makeFlag("yellow", "triangle"); // { color: "yellow", icon: "triangle" }
  */
 export function makeFlag(color, icon) {
+  return {color: color, icon: icon};
   // TODO
 }
 
@@ -63,6 +70,7 @@ export function makeFlag(color, icon) {
  * increment({value: -5}); // {value: -4}
  */
 export function increment(count) {
+  return {value: count.value + 1};
   // TODO
 }
 
@@ -90,6 +98,7 @@ export function increment(count) {
  *
  */
 export function getTaxicabDistance(from, to) {
+  return Math.abs(from.x - to.x) + Math.abs(from.y - to.y);
   // TODO
 }
 
@@ -106,6 +115,7 @@ export function getTaxicabDistance(from, to) {
  * getHerbivores([{name: "Rabbit", isHerbivore: true}]); // [{name: "Rabbit", isHerbivore: true}]
  */
 export function getHerbivores(animals) {
+  return animals.filter(animal => animal.isHerbivore);
   // TODO
 }
 
@@ -122,6 +132,7 @@ export function getHerbivores(animals) {
  * getCarnivoreNames([{name: "Wolf", isCarnivore: true}]); // ["Wolf"]
  */
 export function getCarnivoreNames(animals) {
+  return animals.filter(animal => animal.isCarnivore).map(animal => animal.name);
   // TODO
 }
 
@@ -143,6 +154,7 @@ export function getCarnivoreNames(animals) {
  * getTotalCost([{name: "Notebook", quantity: 0, price: 5}]); // 0
  */
 export function getTotalCost(cart) {
+  return cart.reduce((total, item) => total + item.quantity * item.price, 0);
   // TODO
 }
 
@@ -163,6 +175,10 @@ export function getTotalCost(cart) {
  * zip(["x"], ["x"]); // {x: "x"}
  */
 export function zip(keys, values) {
+  return keys.reduce((obj, key, index) => {
+    obj[key] = values[index];
+    return obj;
+  }, {});
   // TODO
 }
 
@@ -179,5 +195,9 @@ export function zip(keys, values) {
  * countCharacters("aAa"); // {a: 2, A: 1}
  */
 export function countCharacters(word) {
+  return word.split('').reduce((countObj, char) => {
+    countObj[char] = (countObj[char] || 0) + 1;
+    return countObj;
+  }, {});
   // TODO
 }
